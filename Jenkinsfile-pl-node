@@ -1,0 +1,14 @@
+pipeline {
+    agent {
+        node {
+            label 'dev'
+        }
+    } 
+        stages {
+            stage ('code') {
+                steps {
+                   git branch: '${mybranch}', url: 'https://github.com/Mounika-sai-1998/one.git'    // mybranch is reffered from parametarized 
+                }
+            }
+        }
+}
