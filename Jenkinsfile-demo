@@ -1,0 +1,29 @@
+pipeline {
+    agent any
+    tools {
+        maven 'mymaven'
+    }
+    stages{
+        stage ('Code') {
+            steps {
+                git 'https://github.com/Mounika-sai-1998/one.git'
+            }
+        }
+        stage ('Build') {
+            steps {
+               sh 'mvn clean install' 
+            }
+        }
+        stage ('Artifact') {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'myweb', classifier: '', file: 'target/myweb-8.6.9.war', type: 'war']], credentialsId: 'myrepo', groupId: 'in.javahome', nexusUrl: '54.146.152.20:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'myrepo', version: '8.6.9'
+            }
+        }
+        stage ('Deploy') {
+            steps {
+                deploy adapters: [tomcat9(alternativeDeploymentContext: '', credentialsId: 'myapp', path: '', url: 'http://3.80.153.246:8080/')], contextPath: 'myapp', war: 'target/*.war'
+            }
+            
+        }
+    }
+}
