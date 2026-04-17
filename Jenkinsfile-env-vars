@@ -1,0 +1,36 @@
+pipeline {
+    agent {
+        node {
+            label 'dev'
+        }
+    } 
+    environment {    // global variables
+        x = 22
+        y = 33
+    }
+    stages {
+        stage ('Code') {
+            steps {
+               echo "Here the value of x is $x and y is $y"
+            }
+        }
+        stage ('Build') {
+            environment {    // local variables
+                y = 44     // it takes local variable as a first preference 
+            }
+            steps {
+                echo "Here the value of x is $x and y is $y"
+            }
+        }
+        stage ('Test') {
+            steps {
+                echo "Here the value of x is $x"
+            }
+        }
+        stage ('Deploy') {
+            steps {
+                echo "Here the value of y is $y"
+            }
+        }
+    }
+}
