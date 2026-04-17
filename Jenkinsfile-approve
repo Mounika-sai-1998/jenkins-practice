@@ -1,0 +1,33 @@
+pipeline {
+    agent {
+        node {
+            label 'dev'
+        }
+    }
+    stages {
+        stage ("code") {
+            steps {
+                echo "Welcome to My first pipeline type job"
+            }
+        }
+        stage ("Build") {
+            steps {
+                echo "This is build stage"
+            }
+        }
+        stage ("Test") {
+            steps {
+                echo "This is testing stage"
+            }
+        }
+        stage ("Deploy") {
+            input {
+                message 'Can I Deploy'     // deploys only when approved
+            }
+            steps {
+                echo "This is deploy stage"
+                
+            }
+        }
+    }
+}
