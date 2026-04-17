@@ -12,10 +12,17 @@ pipeline {
         }
         stage ("Build") {
             steps {
-                sh 'cal'
-                sh 'timedatectl'
-                sh 'mkdir mounika'
-                sh 'touch devops'
+               // sh 'cal'
+               // sh 'timedatectl'
+               // sh 'mkdir mounika'
+               // sh 'touch devops'
+               sh '''
+               cal
+               timedatectl
+               mkdir mounika
+               touch devops
+               
+               '''
             }
         }
         stage ("Test") {
