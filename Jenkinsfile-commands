@@ -1,0 +1,33 @@
+pipeline {
+    agent {
+        node {
+            label 'dev'
+        }
+    }
+    stages {
+        stage ("code") {
+            steps {
+                echo "Welcome to My first pipeline type job"
+            }
+        }
+        stage ("Build") {
+            steps {
+                sh 'cal'
+                sh 'timedatectl'
+                sh 'mkdir mounika'
+                sh 'touch devops'
+            }
+        }
+        stage ("Test") {
+            steps {
+                echo "This is testing stage"
+            }
+        }
+        stage ("Deploy") {
+            steps {
+                echo "This is deploy stage"
+                
+            }
+        }
+    }
+}
