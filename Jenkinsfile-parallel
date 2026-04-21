@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+
+    stages {
+        stage ("Parallel-Test-Cases") {
+            parallel {
+                stage ("TestCase1") {
+                    steps {
+                        sleep 10
+                    }
+                }
+                stage ("TestCase2") {
+                    steps {
+                        sleep 10
+                    }
+                }
+                stage ("TestCase3") {
+                    steps {
+                        sleep 10
+                    }
+                }
+            }
+        }
+    }
+}
