@@ -1,0 +1,5 @@
+node {
+    stage ("Code") {
+        git "https://github.com/Mounika-sai-1998/one.git"
+    }
+}

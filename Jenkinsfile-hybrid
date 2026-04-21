@@ -1,0 +1,13 @@
+pipeline {
+    agent any 
+    stages {
+        stage ('Code') {
+            steps {
+                script {
+                    if (env.BRANCH_NAME == 'main')
+                    git "https://github.com/Mounika-sai-1998/one.git"
+                }
+            }
+        }
+    }
+}
